@@ -6,6 +6,7 @@ const { spawn } = require("child_process");
 const app = express();
 const port = 3000;
 
+app.use(express.static("public"));
 // Set up multer for file uploads
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -20,8 +21,8 @@ app.post("/upload", upload.single("photo"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded." });
   }
-//   console.log("hello");
-//   Create a Python child process to execute the TensorFlow script
+  //   console.log("hello");
+  //   Create a Python child process to execute the TensorFlow script
   // const process = spawn("python", ["./predict.py"], {
   //   stdio: "inherit",
   //   input: req.file.buffer,
