@@ -17,6 +17,9 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "index.html"));
 });
 
+app.get("/info", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "info.html"));
+});
 app.post("/upload", upload.single("photo"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded." });
