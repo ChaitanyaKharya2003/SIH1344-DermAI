@@ -21,30 +21,31 @@ app.post("/upload", upload.single("photo"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded." });
   }
-  //   console.log("hello");
-  //   Create a Python child process to execute the TensorFlow script
-  // const process = spawn("python", ["./predict.py"], {
-  //   stdio: "inherit",
-  //   input: req.file.buffer,
-  // });
+  // console.log("hello");
+  // Create a Python child process to execute the TensorFlow script
+  const process = spawn("python", ["./predict.py"], {
+    stdio: "inherit",
+    input: req.file.buffer,
+  });
 
-  // let predictedDisease = "";
-  // let treatment = "";
-  // process.stdout.on("data", (data) => {
-  //   output = data.toString().split(",,");
-  //     predictedDisease += output[0];
-  //     treatment += output[1];
-  // });
+  let predictedDisease = "";
+  let treatment = "";
+  process.stdout.on("data", (data) => {
+    output = data.toString().split(",,");
+    predictedDisease += output[0];
+    treatment += output[1];
+  });
 
-  // process.on("exit", (code) => {
-  //   if (code === 0) {
-  //       res.json({
-  //           disease: predictedDisease.trim(),
-  //           treatment: treatment.trim()    });
-  //   } else {
-  //     res.status(500).json({ error: "Prediction failed." });
-  //   }
-  // });
+  process.on("exit", (code) => {
+    if (code === 0) {
+      res.json({
+        disease: predictedDisease.trim(),
+        treatment: treatment.trim(),
+      });
+    } else {
+      res.status(500).json({ error: "Prediction failed." });
+    }
+  });
 });
 
 app.listen(port, () => {

@@ -1,9 +1,12 @@
 import sys
 import tensorflow as tf
 import numpy as np
+import pickle
+import json
 
 # Load your machine learning model here
-model = tf.load_model("SIH 23\Skin-Disease-Image-Classifier-for-Accurate-and-Accessible-Diagnosis-main\website\skin_disorder_classifier_EfficientNetB2.h5")
+pickled_model = pickle.load(open('../finalized_model.pkl', 'rb'))
+
 
 # Loading the json file with the skin disorders
 def get_treatment(path):
@@ -25,7 +28,7 @@ image_data = sys.stdin.buffer.read()
 # Example: image_data = preprocess_image(image_data)
 
 # Make predictions
-predictions = model.predict(np.expand_dims(image_data, axis=0))
+predictions = pickled_model.predict(np.expand_dims(image_data, axis=0))
 predicted_class = np.argmax(predictions[0])
 predicted_disease = disease_labels[predicted_class]
 treatments = treatment_dict.get(predicted_disease, [])
