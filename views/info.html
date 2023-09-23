@@ -1,0 +1,278 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dermatological Disease Detection</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      header {
+        background-color: #4caf50; /* Green header background */
+        color: #fff; /* White text color */
+        text-align: center;
+        padding: 20px;
+      }
+      table{
+        border: 2px solid black;
+        display: flexbox;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding: 20px;
+        grid-template-columns: 1fr 1fr 3fr;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+        <h1>DermAI</h1>
+    </header>
+    <div class="table">
+        <row>
+            <col> <h2> Disease Name </h2> </col>
+            <col> <h2> Disease Description </h2> </col>
+            <col> <h2> Disease Treatment </h2> </col>
+        </row>
+    </div>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disease Information</title>
+    <style>
+      .header {
+        background-color: #4caf50; /* Green header background */
+        color: #fff; /* White text color */
+        text-align: center;
+        padding: 20px;
+      }
+      .disease-grid {
+        display: grid;
+        grid-template-columns: repeat(
+          auto-fill,
+          minmax(300px, 1fr)
+        ); /* Adjust column width as needed */
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .disease-card {
+        border: 1px solid #ddd;
+        box-shadow: 5px 5px #4caf50;
+        padding: 10px;
+        text-align: center;
+        border-radius: 5%;
+        background-color: #f9f9f9;
+      }
+
+      .disease-image {
+        max-width: 100%;
+        height: 200px;
+        border-radius: 5%;
+      }
+
+      h2 {
+        font-size: 24px;
+        margin: 10px 0;
+      }
+
+      p {
+        font-size: 16px;
+        margin: 10px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="header">Dermatological Disease Information</h1>
+    <div class="disease-grid">
+      <!-- Disease 1 -->
+      <div class="disease-card">
+        <img src="../img/acne-cystic-128.jpg" alt="Acne and Rosacea Image" class="disease-image" />
+        <h2>Acne and Rosacea</h2>
+        <p>Description </p>
+        <p>Treatment</p>
+      </div>
+
+      <!-- Disease 2 -->
+      <div class="disease-card">
+        <img src="../img/actinic-keratosis-5FU-19.jpg" alt="Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions Image" class="disease-image" />
+        <h2>Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions</h2>
+        <p>Description</p>
+        <p>Treatment</p>
+      </div>
+      <!-- Disease 3 -->
+      <div class="disease-card">
+        <img src="../img/05atopic0313062.jpg" alt="Atopic Dermatitis Image" class="disease-image" />
+        <h2>Atopic Dermatitis</h2>
+        <p>Description</p>
+        <p>Treatment</p>
+      </div>
+
+      <!-- Disease 4 -->
+      <div class="disease-card">
+        <img src="../img/benign-familial-chronic-pemphigus-9.jpg" alt="Bullous Disease Image" class="disease-image" />
+        <h2>Bullous Disease</h2>
+        <p>Description of Disease 2.</p>
+        <p>Treatment for Disease 2.</p>
+      </div>
+      <!-- Disease 5 -->
+      <div class="disease-card">
+        <img src="disease1.jpg" alt="Cellulitis Impetigo and other Bacterial Infections Images" class="disease-image" />
+        <h2>Cellulitis Impetigo and other Bacterial Infections</h2>
+        <p>Description of Disease 1.</p>
+        <p>Treatment for Disease 1.</p>
+      </div>
+
+      <!-- Disease 6 -->
+      <div class="disease-card">
+        <img src="disease2.jpg" alt="Eczema Image" class="disease-image" />
+        <h2>Eczema</h2>
+        <p>Description of Disease 2.</p>
+        <p>Treatment for Disease 2.</p>
+      </div>
+      <!-- Disease 7 -->
+      <div class="disease-card">
+        <img src="disease1.jpg" alt="Exanthems and Drug Eruptions Image" class="disease-image" />
+        <h2>Exanthems and Drug Eruptions</h2>
+        <p>Description of Disease 1.</p>
+        <p>Treatment for Disease 1.</p>
+      </div>
+
+      <!-- Disease 8 -->
+      <div class="disease-card">
+        <img src="disease2.jpg" alt="Hair Loss Photos Alopecia and other Hair Diseases Image" class="disease-image" />
+        <h2>Hair Loss Photos Alopecia and other Hair Diseases</h2>
+        <p>Description of Disease 2.</p>
+        <p>Treatment for Disease 2.</p>
+      </div>
+      <!-- Disease 9 -->
+      <div class="disease-card">
+        <img src="disease1.jpg" alt="Herpes HPV and other STDs Image" class="disease-image" />
+        <h2>Herpes HPV and other STDs</h2>
+        <p>Description of Disease 1.</p>
+        <p>Treatment for Disease 1.</p>
+      </div>
+
+      <!-- Disease 10 -->
+      <div class="disease-card">
+        <img src="disease2.jpg" alt="Light Diseases and Disorders of Pigmentation Image" class="disease-image" />
+        <h2>Light Diseases and Disorders of Pigmentation</h2>
+        <p>Description of Disease 2.</p>
+        <p>Treatment for Disease 2.</p>
+      </div>
+      <!-- Disease 11 -->
+      <div class="disease-card">
+        <img src="disease1.jpg" alt="Lupus and other Connective Tissue Diseases" class="disease-image" />
+        <h2>Lupus and other Connective Tissue Diseases</h2>
+        <p>Description of Disease 1.</p>
+        <p>Treatment for Disease 1.</p>
+      </div>
+
+      <!-- Disease 12 -->
+      <div class="disease-card">
+        <img src="disease2.jpg" alt="Melanoma Skin Cancer Nevi and Moles Image" class="disease-image" />
+        <h2>Melanoma Skin Cancer Nevi and Moles</h2>
+        <p>Description of Disease 2.</p>
+        <p>Treatment for Disease 2.</p>
+      </div>
+      <!-- Disease 13 -->
+      <div class="disease-card">
+        <img src="disease1.jpg" alt="Poison Ivy Photos and other Contact Dermatitis Image" class="disease-image" />
+        <h2>Poison Ivy Photos and other Contact Dermatitis</h2>
+        <p>Description of Disease 1.</p>
+        <p>Treatment for Disease 1.</p>
+      </div>
+
+      <!-- Disease 14 -->
+      <div class="disease-card">
+        <img src="disease2.jpg" alt="Psoriasis Lichen Planus Image" class="disease-image" />
+        <h2>Psoriasis, Lichen Planus and related diseases</h2>
+        <p>Description of Disease 2.</p>
+        <p>Treatment for Disease 2.</p>
+      </div>
+      <!-- Disease 15 -->
+      <div class="disease-card">
+        <img src="disease1.jpg" alt="Nail Fungus and other Nail Disease Image" class="disease-image" />
+        <h2>Nail Fungus and other Nail Disease</h2>
+        <p>Description of Disease 1.</p>
+        <p>Treatment for Disease 1.</p>
+      </div>
+
+      <!-- Disease 16 -->
+      <div class="disease-card">
+        <img src="disease2.jpg" alt="Scabies Lyme Disease and other Infestations and Bites Images" class="disease-image" />
+        <h2>DScabies Lyme Disease and other Infestations and Bites</h2>
+        <p>Description of Disease 2.</p>
+        <p>Treatment for Disease 2.</p>
+      </div>
+      <!-- Disease 17 -->
+      <div class="disease-card">
+        <img src="disease1.jpg" alt="Seborrheic Keratoses and other Benign Tumors Image" class="disease-image" />
+        <h2>Seborrheic Keratoses and other Benign Tumors</h2>
+        <p>Description of Disease 1.</p>
+        <p>Treatment for Disease 1.</p>
+      </div>
+
+      <!-- Disease 18 -->
+      <div class="disease-card">
+        <img src="disease2.jpg" alt="Systemic Disease Image" class="disease-image" />
+        <h2>Systemic Disease</h2>
+        <p>Description of Disease 2.</p>
+        <p>Treatment for Disease 2.</p>
+      </div>
+      <!-- Disease 19 -->
+      <div class="disease-card">
+        <img src="disease1.jpg" alt="Tinea Ringworm Candidiasis and other Fungal Infections Image" class="disease-image" />
+        <h2>Tinea Ringworm Candidiasis and other Fungal Infections</h2>
+        <p>Description of Disease 1.</p>
+        <p>Treatment for Disease 1.</p>
+      </div>
+
+      <!-- Disease 20 -->
+      <div class="disease-card">
+        <img src="disease2.jpg" alt="Urticaria Hives Image" class="disease-image" />
+        <h2>Urticaria Hives</h2>
+        <p>Description of Disease 2.</p>
+        <p>Treatment for Disease 2.</p>
+      </div>
+
+      <!-- Disease 21 -->
+      <div class="disease-card">
+        <img src="disease2.jpg" alt="Vascular Tumors Image" class="disease-image" />
+        <h2>Vascular Tumors</h2>
+        <p>Description of Disease 2.</p>
+        <p>Treatment for Disease 2.</p>
+      </div>
+      <!-- Disease 22 -->
+      <div class="disease-card">
+        <img src="disease2.jpg" alt="Vasculitis Image" class="disease-image" />
+        <h2>Vasculitis</h2>
+        <p>Description of Disease 2.</p>
+        <p>Treatment for Disease 2.</p>
+      </div>
+      <!-- Disease 23 -->
+      <div class="disease-card">
+        <img src="disease2.jpg" alt="Warts Molluscum and other Viral Infections Image" class="disease-image" />
+        <h2>Warts Molluscum and other Viral Infections</h2>
+        <p>Description of Disease 2.</p>
+        <p>Treatment for Disease 2.</p>
+      </div>
+      <!-- Add more disease cards as needed -->
+    </div>
+  </body>
+</html>
+

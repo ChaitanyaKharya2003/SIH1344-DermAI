@@ -40,13 +40,18 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for a clean look */
       }
 
-      .box-header, header{
+      .box-header{
         background-color: #4caf50; /* Green header background */
         color: #fff; /* White text color */
         text-align: center;
         padding: 20px;
       }
+      header{
+        background-color: #4caf50; /* Green header background */
+        color: #fff; /* White text color */
+        padding: 20px;
 
+      }
       h1 {
         font-size: 36px;
         margin: 0;
@@ -73,6 +78,12 @@
         text-decoration: none;
         font-weight: bold;
         transition: background-color 0.3s ease; /* Smooth transition on hover */
+      }
+      .col{
+        /* padding: 10px;
+        margin: 10px; */
+        text-align: center;
+        justify-content: center;
       }
 
       .btn:hover {
@@ -121,9 +132,15 @@
   <body>
     <header>
       <h1>DermAI</h1>
+      <div class="d-grid">
+        <div class="row">
+          <!-- <div class="col">DermAI</div> -->
+          <div class="col">Information Page</div>
+          <div class="col">About Us</div>
+        </div>
+      </div>
   </header>
     <div class="container">
-      
       <header>
         <h1 class="box-header">Dermatological Disease Detection AI</h1>
       </header>
@@ -134,10 +151,10 @@
                 <input type="file" name="photo" id="fileInput" accept="image/*">
             </div>
             <div class="input-group-append">
-              <button class="submit btn"> Run AI</button>
+              <button class="submit btn">Run AI</button>
             </div>
           </div>
-           </form>
+        </form>
       </main>
     </div>
     <!-- JAVASCRIPT -->
@@ -196,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     form.addEventListener('submit', async function (e) {
         e.preventDefault();
-        
+        alert("hello");
         const formData = new FormData(form);
 
         try {
