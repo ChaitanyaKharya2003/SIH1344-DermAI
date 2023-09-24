@@ -96,7 +96,3 @@ p {
 .drop-container:hover {
   border: 2px solid #4caf50; /* Green solid border on hover */
 }
-
-input[type="file"] {
-  display: none; /* Hide the file input element */
-}

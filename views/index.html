@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dermatological Disease Detection</title>
 
-    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/css/style.css" type="text/css" >
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <!-- <link rel="stylesheet" href="../public/style.css" /> -->
-    <!-- CSS -->
     <style>
       * {
         margin: 0;
@@ -21,125 +20,121 @@
         box-sizing: border-box;
       }
       body {
-        /* background-color:; Green background color */
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
+          /* background-color:; Green background color */
+          font-family: Arial, sans-serif;
+          margin: 0;
+          padding: 0;
       }
-
       .container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        background-color: #fff; /* White background for the content container */
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for a clean look */
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 20px;
+          background-color: #fff; /* White background for the content container */
+          border-radius: 5px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for a clean look */
       }
+      .box-header {
+          background-color: #4caf50; /* Green header background */
+          color: #fff; /* White text color */
+          text-align: center;
+          padding: 20px;
+      }
+      header {
+          background-color: #4caf50; /* Green header background */
+          color: #fff; /* White text color */
+          padding: 20px;
+        }
+        h1 {
+          font-size: 36px;
+          margin: 0;
+        }
 
-      .box-header{
-        background-color: #4caf50; /* Green header background */
-        color: #fff; /* White text color */
-        text-align: center;
-        padding: 20px;
-      }
-      header{
-        background-color: #4caf50; /* Green header background */
-        color: #fff; /* White text color */
-        padding: 20px;
+        main {
+          padding: 20px;
+          text-align: center;
+          justify-content: center;
+        }
 
-      }
-      h1 {
-        font-size: 36px;
-        margin: 0;
-      }
+        p {
+          font-size: 18px;
+          color: #333; /* Dark gray text color */
+        }
 
-      main {
-        padding: 20px;
-        text-align: center;
-        justify-content: center;
-      }
+        /* Green button style */
+        .btn {
+          display: inline-block;
+          background-color: #4caf50;
+          color: #fff;
+          padding: 10px 20px;
+          margin: 2rem;
+          text-decoration: none;
+          font-weight: bold;
+          transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
+        .col {
+          /* padding: 10px;
+          margin: 10px; */
+          text-align: center;
+          justify-content: center;
+        }
 
-      p {
-        font-size: 18px;
-        color: #333; /* Dark gray text color */
-      }
+        .btn:hover {
+          background-color: #45a049; /* Slightly darker green on hover */
+        }
+        .input-group > .custom-file {
+          position: relative;
+          -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+          width: 1%;
+          margin-bottom: 0;
+        }
+        .input-group > .custom-file {
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-align: center;
+          align-items: center;
+        }
+        .input-group-text {
+          margin: 10px;
+          justify-content: center;
+          align-items: center;
+        }
+        .img {
+          padding: 1rem;
+          margin: 1rem;
+          align-items: center;
+          justify-content: center;
+        }
+        .drop-container {
+          border: 2px dashed #4caf50; /* Green dashed border */
+          padding: 20px;
+          text-align: center;
+          cursor: pointer;
+        }
 
-      /* Green button style */
-      .btn {
-        display: inline-block;
-        background-color: #4caf50;
-        color: #fff;
-        padding: 10px 20px;
-        margin: 2rem;
-        text-decoration: none;
-        font-weight: bold;
-        transition: background-color 0.3s ease; /* Smooth transition on hover */
-      }
-      .col{
-        /* padding: 10px;
-        margin: 10px; */
-        text-align: center;
-        justify-content: center;
-      }
+        .drop-container:hover {
+          border: 2px solid #4caf50; /* Green solid border on hover */
+        }
 
-      .btn:hover {
-        background-color: #45a049; /* Slightly darker green on hover */
-      }
-      .input-group > .custom-file {
-        position: relative;
-        -ms-flex: 1 1 auto;
-        flex: 1 1 auto;
-        width: 1%;
-        margin-bottom: 0;
-      }
-      .input-group > .custom-file {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-align: center;
-        align-items: center;
-      }
-      .input-group-text {
-        margin: 10px;
-        justify-content: center;
-        align-items: center;
-      }
-      .img {
-        padding: 1rem;
-        margin: 1rem;
-        align-items: center;
-        justify-content: center;
-      }
-      .drop-container {
-        border: 2px dashed #4caf50; /* Green dashed border */
-        padding: 20px;
-        text-align: center;
-        cursor: pointer;
-      }
-
-      .drop-container:hover {
-        border: 2px solid #4caf50; /* Green solid border on hover */
-      }
-
-      /* input[type="file"] {
-        display: none; /* Hide the file input element */
     </style>
   </head>
-  <!-- HTML -->
   <body>
     <header>
-      <h1>DermAI</h1>
       <div class="d-grid">
         <div class="row">
-          <!-- <div class="col">DermAI</div> -->
-          <div class="col"><a href="/info" style="text-decoration: none; color: white">Information Page</a></div>
-          <div class="col">About Us</div>
+          <div class="col h4">
+            DermAI
+          </div>
+          <div class="col h4"><a href="/info" style="text-decoration: none; color: white"> Information Page</a></div>
+          <div class="col h4">About Us</div>
         </div>
       </div>
-  </header>
+    </header>
+
     <div class="container">
       <header>
         <h1 class="box-header">Dermatological Disease Detection AI</h1>
@@ -149,92 +144,89 @@
             <div class="drop-container" id="dropContainer" draggable="true">
                 <p>Drag and drop an image here or click to browse.</p>
                 <input type="file" name="photo" id="fileInput" accept="image/*">
-            </div>
-            <div class="input-group-append">
-              <button class="submit btn">Run AI</button>
-            </div>
+              </div>
+              <button class="submit btn" type="submit">Run AI</button>
           </div>
         </form>
       </main>
     </div>
-    <!-- JAVASCRIPT -->
     <script>
       const dropContainer = document.getElementById("dropContainer");
-const fileInput = document.getElementById("fileInput");
+      const fileInput = document.getElementById("fileInput");
 
-// Prevent the default behavior of the browser when a file is dragged over the container
-dropContainer.addEventListener("dragenter", (e) => {
-  e.preventDefault();
-  dropContainer.classList.add("highlight");
-});
-
-dropContainer.addEventListener("dragleave", (e) => {
-  e.preventDefault();
-  dropContainer.classList.remove("highlight");
-});
-
-dropContainer.addEventListener("dragover", (e) => {
-  e.preventDefault();
-});
-
-// Handle the file drop event
-dropContainer.addEventListener("drop", (e) => {
-  e.preventDefault();
-  dropContainer.classList.remove("highlight");
-  const files = e.dataTransfer.files;
-  if (files.length > 0) {
-    fileInput.files = files;
-    handleFile(files[0]); // You can handle the selected file here
-  }
-});
-
-// Trigger file input when the drop container is clicked
-dropContainer.addEventListener("click", () => {
-  fileInput.click();
-});
-
-// Handle file input change
-fileInput.addEventListener("change", () => {
-  const selectedFile = fileInput.files[0];
-  handleFile(selectedFile); // You can handle the selected file here
-});
-
-// Function to handle the selected file (replace with your own logic)
-function handleFile(file) {
-  if (file) {
-    // Display the file name or perform further processing
-    console.log("Selected file:", file.name);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    const form = document.querySelector('form');
-    const resultText = document.getElementById('disease');
-
-    form.addEventListener('submit', async function (e) {
+      // Prevent the default behavior of the browser when a file is dragged over the container
+      dropContainer.addEventListener("dragenter", (e) => {
         e.preventDefault();
-        alert("hello");
-        const formData = new FormData(form);
+        dropContainer.classList.add("highlight");
+      });
 
-        try {
-            const response = await fetch('/upload', {
-                method: 'POST',
-                body: formData,
-            });
+      dropContainer.addEventListener("dragleave", (e) => {
+        e.preventDefault();
+        dropContainer.classList.remove("highlight");
+      });
 
-            if (response.ok) {
-                const data = await response.json();
-                resultText.textContent = `Predicted Disease: ${data.disease}`;
-                treatmentText.textContent = `Treatment: ${data.treatment}`;
-            } else {
-                resultText.textContent = 'Error occurred during prediction.';
-            }
-        } catch (error) {
-            console.error(error);
-            resultText.textContent = 'An error occurred.';
+      dropContainer.addEventListener("dragover", (e) => {
+        e.preventDefault();
+      });
+
+      // Handle the file drop event
+      dropContainer.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropContainer.classList.remove("highlight");
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          fileInput.files = files;
+          handleFile(files[0]); // You can handle the selected file here
         }
-    });
-});
+      });
+
+      // Trigger file input when the drop container is clicked
+      dropContainer.addEventListener("click", () => {
+        fileInput.click();
+      });
+
+      // Handle file input change
+      fileInput.addEventListener("change", () => {
+        const selectedFile = fileInput.files[0];
+        handleFile(selectedFile); // You can handle the selected file here
+      });
+
+      // Function to handle the selected file (replace with your own logic)
+      function handleFile(file) {
+        if (file) {
+          // Display the file name or perform further processing
+          console.log("Selected file:", file.name);
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+          const form = document.querySelector('form');
+          const resultText = document.getElementById('disease');
+
+          form.addEventListener('submit', async function (e) {
+              e.preventDefault();
+              alert("hello");
+              const formData = new FormData(form);
+
+              try {
+                  const response = await fetch('/upload', {
+                      method: 'POST',
+                      body: formData,
+                  });
+
+                  if (response.ok) {
+                      const data = await response.json();
+                      resultText.textContent = `Predicted Disease: ${data.disease}`;
+                      treatmentText.textContent = `Treatment: ${data.treatment}`;
+                  } else {
+                      resultText.textContent = 'Error occurred during prediction.';
+                  }
+              } catch (error) {
+                  console.error(error);
+                  resultText.textContent = 'An error occurred.';
+              }
+          });
+      });
 
     </script>
     <script src="../public/box.js"></script>
