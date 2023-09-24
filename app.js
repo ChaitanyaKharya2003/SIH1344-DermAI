@@ -1,8 +1,9 @@
 const express = require("express");
 const multer = require("multer");
-
+const { mkdir } = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
+const { rmdir } = require("fs");
 
 const app = express();
 const port = 3000;
@@ -19,8 +20,7 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
-
-const upload = multer({ storage });
+const upload = multer({ storage: storage });
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -35,31 +35,35 @@ app.post("/upload", upload.single("photo"), (req, res) => {
   if (!req.file) {
     return res.status(400).json({ error: "No file uploaded." });
   }
-  console.log("File Uploaded Successfully ", "No error");  
+  console.log("File Uploaded Successfully ", "No error");
   // Create a Python child process to execute the TensorFlow script
-  // const process = spawn("python", ["./predict.py"], {
-  //   stdio: "inherit",
-  //   input: req.file.buffer,
-  // });
+  const process = spawn("python", ["./predict.py"], {
+    stdio: ["pipe", "pipe", "pipe"],
+    // input: req.file.buffer,
+  });
 
-  // let predictedDisease = "";
+  let predictedDisease = "";
   // let treatment = "";
-  // process.stdout.on("data", (data) => {
-  //   output = data.toString().split(",,");
-  //   predictedDisease += output[0];
-  //   treatment += output[1];
-  // });
+  process.stdout.on("data", (data) => {
+    output = data.toString();
+    predictedDisease += output;
 
-  // process.on("exit", (code) => {
-  //   if (code === 0) {
-  //     res.json({
-  //       disease: predictedDisease.trim(),
-  //       treatment: treatment.trim(),
-  //     });
-  //   } else {
-  //     res.status(500).json({ error: "Prediction failed." });
-  //   }
-  // });
+    // treatment += output[1];
+  });
+  console.log(req.file.buffer);
+  process.stdin.write(req.file.buffer.toString());
+  process.stdin.end();
+  process.on("exit", (code) => {
+    if (code === 0) {
+      res.render("result", { disease: predictedDisease.trim() });
+      res.json({
+        disease: predictedDisease.trim(),
+        // treatment: treatment.trim(),
+      });
+    } else {
+      res.status(500).json({ error: "Prediction failed." });
+    }
+  });
 });
 
 app.listen(port, () => {

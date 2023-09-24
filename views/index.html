@@ -205,7 +205,7 @@
 
           form.addEventListener('submit', async function (e) {
               e.preventDefault();
-              alert("hello");
+              // alert("hello");
               const formData = new FormData(form);
 
               try {
@@ -217,7 +217,7 @@
                   if (response.ok) {
                       const data = await response.json();
                       resultText.textContent = `Predicted Disease: ${data.disease}`;
-                      treatmentText.textContent = `Treatment: ${data.treatment}`;
+                      // treatmentText.textContent = `Treatment: ${data.treatment}`;
                   } else {
                       resultText.textContent = 'Error occurred during prediction.';
                   }
