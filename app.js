@@ -39,12 +39,43 @@ app.get("/result", (req, res) => {
   });
 });
 
+app.get("/ad", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "AtopicDermatitis.html"));
+});
+app.get("/ak", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "ActinicKeratosis.html"));
+});
+app.get("/bk", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "BenignKeratosis.html"));
+});
+app.get("/df", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "Dermatofibroma.html"));
+});
+app.get("/mn", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "MelanocyticNevus.html"));
+});
+app.get("/mel", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "Melanomaa.html"));
+});
+app.get("/scc", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "SquamousCellCarcinoma.html"));
+});
+app.get("/trc", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "TineaRingwormCandidiasis.html"));
+});
+app.get("/vl", (req, res) => {
+  res.sendFile(path.join(__dirname, "views", "Vascularlesion.html"));
+});
+
+
+
+
 app.post("/upload", upload.single("photo"), async (req, res) => {
   try {
     // if (!req.file) {
     //   return res.status(400).json({ error: "No file uploaded." });
     // }
-
+ 
     console.log("File Uploaded Successfully, No error");
 
     const process = spawn("python", ["./predict.py"], {
