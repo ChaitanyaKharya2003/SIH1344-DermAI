@@ -1,26 +1,26 @@
 const express = require("express");
 const multer = require("multer");
-const { mkdir } = require("fs");
 const path = require("path");
 const { spawn } = require("child_process");
-const { rmdir } = require("fs");
 
 const app = express();
 const port = 3000;
+var disease = "adjflk lkasdjflk jasdkjfl aja s";
+
 app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 app.use(express.static("public"));
-// Set up multer for file uploads
-// const storage = multer.memoryStorage();
+
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "public/uploads");
   },
   filename: function (req, file, cb) {
-    // console.log(file);
     cb(null, file.originalname);
   },
 });
-const upload = multer({ storage: storage });
+const upload = multer({ storage });
 
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -31,39 +31,55 @@ app.get("/", (req, res) => {
 app.get("/info", (req, res) => {
   res.sendFile(path.join(__dirname, "views", "info.html"));
 });
-app.post("/upload", upload.single("photo"), (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ error: "No file uploaded." });
+app.get("/result", (req, res) => {
+  // choose the last word of the string
+  console.log(disease.split("\n"));
+  res.render(path.join(__dirname, "views", "result.ejs"), {
+    disease: disease.split("\n")[3],
+  });
+});
+
+app.post("/upload", upload.single("photo"), async (req, res) => {
+  try {
+    // if (!req.file) {
+    //   return res.status(400).json({ error: "No file uploaded." });
+    // }
+
+    console.log("File Uploaded Successfully, No error");
+
+    const process = spawn("python", ["./predict.py"], {
+      stdio: ["pipe", "pipe", "pipe"],
+    });
+
+    process.stdin.write(req.file.path);
+    process.stdin.end();
+
+    let predictedDisease = "";
+
+    process.stdout.on("data", (data) => {
+      console.log("Data received from Python script");
+      const output = data.toString();
+      predictedDisease += output;
+      console.log(predictedDisease);
+      disease = predictedDisease;
+    });
+
+    process.on("exit", async (code) => {
+      console.log("Python process exited with code: " + code);
+
+      if (code === 0) {
+        // Redirect to the "/result" route after successful processing
+        // res.redirect("/result");
+        res.render("result", { disease: disease });
+      } else {
+        // Handle the case where the Python script failed
+        res.status(500).json({ error: "Prediction failed." });
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    // res.status(500).json({ error: "An error occurred." });
   }
-  console.log("File Uploaded Successfully ", "No error");
-  // Create a Python child process to execute the TensorFlow script
-  const process = spawn("python", ["./predict.py"], {
-    stdio: ["pipe", "pipe", "pipe"],
-    // input: req.file.buffer,
-  });
-
-  let predictedDisease = "";
-  // let treatment = "";
-  process.stdout.on("data", (data) => {
-    output = data.toString();
-    predictedDisease += output;
-
-    // treatment += output[1];
-  });
-  console.log(req.file.buffer);
-  process.stdin.write(req.file.buffer.toString());
-  process.stdin.end();
-  process.on("exit", (code) => {
-    if (code === 0) {
-      res.render("result", { disease: predictedDisease.trim() });
-      res.json({
-        disease: predictedDisease.trim(),
-        // treatment: treatment.trim(),
-      });
-    } else {
-      res.status(500).json({ error: "Prediction failed." });
-    }
-  });
 });
 
 app.listen(port, () => {

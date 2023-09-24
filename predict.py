@@ -63,10 +63,11 @@ def prediction(image_path):
     return predicted_disease
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python predict.py <image_path>")
-        sys.exit(1)
+    # if len(sys.argv) != 2:
+    #     print("Usage: python predict.py <image_path>")
+    #     print("hi",sys.stdin.buffer.read())
+    #     sys.exit(1)
 
-    image_path = sys.argv[1]
+    image_path = sys.stdin.buffer.read()
     predicted_disease = prediction(image_path)
     print(predicted_disease)

@@ -146,8 +146,10 @@
                 <input type="file" name="photo" id="fileInput" accept="image/*">
               </div>
               <button class="submit btn" type="submit">Run AI</button>
+              <div ><button  id="result"class="btn" style="visibility: hidden;">View Results</button></div>
           </div>
         </form>
+        
       </main>
     </div>
     <script>
@@ -198,7 +200,12 @@
           console.log("Selected file:", file.name);
         }
       }
-
+      document.addEventListener("DOMContentLoaded", () => {
+        const resultButton = document.getElementById("result");
+        resultButton.addEventListener("click", () => {
+          window.location.href = "/result";
+        });
+      });
       document.addEventListener('DOMContentLoaded', function () {
           const form = document.querySelector('form');
           const resultText = document.getElementById('disease');
@@ -207,7 +214,8 @@
               e.preventDefault();
               // alert("hello");
               const formData = new FormData(form);
-
+              resultbtn = document.getElementById('result');
+              resultbtn.style.visibility = "visible";
               try {
                   const response = await fetch('/upload', {
                       method: 'POST',
